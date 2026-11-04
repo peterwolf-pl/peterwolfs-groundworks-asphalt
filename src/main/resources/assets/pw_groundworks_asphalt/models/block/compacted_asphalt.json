@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "pw_groundworks_asphalt:block/compacted_asphalt"
+  }
+}

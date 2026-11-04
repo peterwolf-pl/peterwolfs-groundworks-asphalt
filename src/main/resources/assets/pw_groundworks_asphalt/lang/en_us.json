@@ -1,0 +1,36 @@
+{
+  "block.pw_groundworks_asphalt.fresh_asphalt": "Fresh Asphalt",
+  "block.pw_groundworks_asphalt.compacted_asphalt": "Compacted Asphalt",
+  "block.pw_groundworks_asphalt.asphalt_slab": "Asphalt Slab",
+  "block.pw_groundworks_asphalt.asphalt_white_line": "Asphalt (White Marking)",
+  "block.pw_groundworks_asphalt.asphalt_yellow_line": "Asphalt (Yellow Marking)",
+
+  "item.pw_groundworks_asphalt.fresh_asphalt": "Fresh Asphalt",
+  "item.pw_groundworks_asphalt.compacted_asphalt": "Compacted Asphalt",
+  "item.pw_groundworks_asphalt.asphalt_slab": "Asphalt Slab",
+  "item.pw_groundworks_asphalt.asphalt_white_line": "Asphalt (White Marking)",
+  "item.pw_groundworks_asphalt.asphalt_yellow_line": "Asphalt (Yellow Marking)",
+
+  "item.pw_groundworks_asphalt.asphalt_mix": "Hot Asphalt Mix",
+  "item.pw_groundworks_asphalt.cat_grader": "Cat Motor Grader",
+  "item.pw_groundworks_asphalt.asphalt_paver": "Asphalt Paver",
+  "item.pw_groundworks_asphalt.road_roller": "16T Heavy Road Roller",
+
+  "entity.pw_groundworks_asphalt.cat_grader": "Cat Motor Grader",
+  "entity.pw_groundworks_asphalt.asphalt_paver": "Asphalt Paver",
+  "entity.pw_groundworks_asphalt.road_roller": "16T Heavy Road Roller",
+
+  "subtitles.pw_groundworks_asphalt.engine_loop": "Machinery engine running",
+  "subtitles.pw_groundworks_asphalt.engine_load": "Machinery engine straining",
+  "subtitles.pw_groundworks_asphalt.roller_vibrate": "Road roller vibratory drum rumbling",
+  "subtitles.pw_groundworks_asphalt.paver_screed": "Asphalt paver screed laying hot mat",
+  "subtitles.pw_groundworks_asphalt.grader_scrape": "Grader blade cutting terrain",
+
+  "category.pw_groundworks_asphalt.controls": "Groundworks Asphalt",
+  "key.pw_groundworks_asphalt.tool_lift_up": "Raise Attachment / Blade",
+  "key.pw_groundworks_asphalt.tool_lift_down": "Lower Attachment / Blade",
+  "key.pw_groundworks_asphalt.tool_aux_left": "Rotate Blade / Tool Left",
+  "key.pw_groundworks_asphalt.tool_aux_right": "Rotate Blade / Tool Right",
+  "key.pw_groundworks_asphalt.action_1": "Toggle Action 1 (Vibrate / Pave / Grade)",
+  "key.pw_groundworks_asphalt.action_2": "Toggle Action 2 (Water / Hopper / Ripper)"
+}

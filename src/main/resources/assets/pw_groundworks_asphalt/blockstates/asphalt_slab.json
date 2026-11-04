@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "pw_groundworks_asphalt:block/asphalt_slab"
+    },
+    "type=top": {
+      "model": "pw_groundworks_asphalt:block/asphalt_slab_top"
+    },
+    "type=double": {
+      "model": "pw_groundworks_asphalt:block/compacted_asphalt"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "pw_groundworks_asphalt:block/compacted_asphalt",
+    "top": "pw_groundworks_asphalt:block/compacted_asphalt",
+    "side": "pw_groundworks_asphalt:block/compacted_asphalt"
+  }
+}

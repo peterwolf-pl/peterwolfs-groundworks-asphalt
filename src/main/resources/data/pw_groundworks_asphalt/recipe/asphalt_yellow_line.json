@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "AAA",
+    "AYA",
+    "AAA"
+  ],
+  "key": {
+    "A": "pw_groundworks_asphalt:compacted_asphalt",
+    "Y": "minecraft:yellow_dye"
+  },
+  "result": {
+    "id": "pw_groundworks_asphalt:asphalt_yellow_line",
+    "count": 8
+  }
+}

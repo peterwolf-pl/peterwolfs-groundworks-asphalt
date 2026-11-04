@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "MM",
+    "MM"
+  ],
+  "key": {
+    "M": "pw_groundworks_asphalt:asphalt_mix"
+  },
+  "result": {
+    "id": "pw_groundworks_asphalt:fresh_asphalt",
+    "count": 4
+  }
+}

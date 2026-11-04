@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "ingredient": "pw_groundworks_asphalt:fresh_asphalt",
+  "result": {
+    "id": "pw_groundworks_asphalt:compacted_asphalt"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

@@ -1,0 +1,11 @@
+.gradle/
+build/
+bin/
+out/
+.idea/
+*.iml
+.DS_Store
+visual-tests/current/
+run/
+logs/
+__pycache__/

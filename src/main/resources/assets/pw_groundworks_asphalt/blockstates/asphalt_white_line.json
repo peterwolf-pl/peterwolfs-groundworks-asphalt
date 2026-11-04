@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line"
+    },
+    "facing=south": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line"
+    },
+    "facing=east": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line",
+      "y": 90
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "roller_vibrate": {
+    "category": "blocks",
+    "sounds": [
+      "minecraft:dig/stone1",
+      "minecraft:dig/stone2",
+      "minecraft:dig/stone3"
+    ],
+    "subtitle": "subtitles.pw_groundworks_asphalt.roller_vibrate"
+  },
+  "paver_screed": {
+    "category": "blocks",
+    "sounds": [
+      "minecraft:block/sand/step1",
+      "minecraft:block/sand/step2",
+      "minecraft:random/fizz"
+    ],
+    "subtitle": "subtitles.pw_groundworks_asphalt.paver_screed"
+  },
+  "grader_scrape": {
+    "category": "blocks",
+    "sounds": [
+      "minecraft:block/gravel/break1",
+      "minecraft:block/gravel/break2",
+      "minecraft:item/shovel/flatten"
+    ],
+    "subtitle": "subtitles.pw_groundworks_asphalt.grader_scrape"
+  }
+}

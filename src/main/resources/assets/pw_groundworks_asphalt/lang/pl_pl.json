@@ -1,0 +1,36 @@
+{
+  "block.pw_groundworks_asphalt.fresh_asphalt": "Świeży asfalt",
+  "block.pw_groundworks_asphalt.compacted_asphalt": "Zagęszczony asfalt",
+  "block.pw_groundworks_asphalt.asphalt_slab": "Półblok asfaltowy",
+  "block.pw_groundworks_asphalt.asphalt_white_line": "Asfalt (Biała linia)",
+  "block.pw_groundworks_asphalt.asphalt_yellow_line": "Asfalt (Żółta linia)",
+
+  "item.pw_groundworks_asphalt.fresh_asphalt": "Świeży asfalt",
+  "item.pw_groundworks_asphalt.compacted_asphalt": "Zagęszczony asfalt",
+  "item.pw_groundworks_asphalt.asphalt_slab": "Półblok asfaltowy",
+  "item.pw_groundworks_asphalt.asphalt_white_line": "Asfalt (Biała linia)",
+  "item.pw_groundworks_asphalt.asphalt_yellow_line": "Asfalt (Żółta linia)",
+
+  "item.pw_groundworks_asphalt.asphalt_mix": "Gorąca mieszanka mineralno-asfaltowa",
+  "item.pw_groundworks_asphalt.cat_grader": "Równiarka drogowa Cat",
+  "item.pw_groundworks_asphalt.asphalt_paver": "Rozściełacz asfaltu",
+  "item.pw_groundworks_asphalt.road_roller": "Walec drogowy 16T",
+
+  "entity.pw_groundworks_asphalt.cat_grader": "Równiarka drogowa Cat",
+  "entity.pw_groundworks_asphalt.asphalt_paver": "Rozściełacz asfaltu",
+  "entity.pw_groundworks_asphalt.road_roller": "Walec drogowy 16T",
+
+  "subtitles.pw_groundworks_asphalt.engine_loop": "Praca silnika maszyny",
+  "subtitles.pw_groundworks_asphalt.engine_load": "Silnik maszyny pod obciążeniem",
+  "subtitles.pw_groundworks_asphalt.roller_vibrate": "Dudnienie bębna wibracyjnego walca",
+  "subtitles.pw_groundworks_asphalt.paver_screed": "Stół rozściełacza układa gorącą masę",
+  "subtitles.pw_groundworks_asphalt.grader_scrape": "Lemiesz równiarki skrawa podłoże",
+
+  "category.pw_groundworks_asphalt.controls": "Groundworks Asphalt",
+  "key.pw_groundworks_asphalt.tool_lift_up": "Podnieś osprzęt / lemiesz",
+  "key.pw_groundworks_asphalt.tool_lift_down": "Opuść osprzęt / lemiesz",
+  "key.pw_groundworks_asphalt.tool_aux_left": "Obrót lemiesza / narzędzia w lewo",
+  "key.pw_groundworks_asphalt.tool_aux_right": "Obrót lemiesza / narzędzia w prawo",
+  "key.pw_groundworks_asphalt.action_1": "Przełącz akcję 1 (Wibracja / Układanie / Równanie)",
+  "key.pw_groundworks_asphalt.action_2": "Przełącz akcję 2 (Zraszanie / Kosz / Zrywak)"
+}

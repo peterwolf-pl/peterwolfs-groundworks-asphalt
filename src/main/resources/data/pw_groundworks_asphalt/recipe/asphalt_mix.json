@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SGS",
+    "GCG",
+    "BSB"
+  ],
+  "key": {
+    "S": "minecraft:sand",
+    "G": "minecraft:gravel",
+    "C": "minecraft:coal",
+    "B": "minecraft:cobblestone"
+  },
+  "result": {
+    "id": "pw_groundworks_asphalt:asphalt_mix",
+    "count": 8
+  }
+}

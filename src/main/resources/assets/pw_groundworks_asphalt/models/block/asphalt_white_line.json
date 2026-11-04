@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "pw_groundworks_asphalt:block/compacted_asphalt",
+    "down": "pw_groundworks_asphalt:block/compacted_asphalt",
+    "up": "pw_groundworks_asphalt:block/asphalt_white_line",
+    "north": "pw_groundworks_asphalt:block/compacted_asphalt",
+    "south": "pw_groundworks_asphalt:block/compacted_asphalt",
+    "west": "pw_groundworks_asphalt:block/compacted_asphalt",
+    "east": "pw_groundworks_asphalt:block/compacted_asphalt"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "AAA"
+  ],
+  "key": {
+    "A": "pw_groundworks_asphalt:compacted_asphalt"
+  },
+  "result": {
+    "id": "pw_groundworks_asphalt:asphalt_slab",
+    "count": 6
+  }
+}

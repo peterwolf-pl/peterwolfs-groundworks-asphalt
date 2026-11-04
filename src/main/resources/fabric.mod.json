@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "pw_groundworks_asphalt",
+  "version": "${version}",
+  "name": "Peterwolf's Groundworks Asphalt",
+  "description": "Road construction machinery and asphalt paving extension for Peterwolf's Groundworks.",
+  "authors": [
+    "Piotrek"
+  ],
+  "contact": {
+    "homepage": "https://github.com/piotrek/peterwolfs-groundworks-asphalt"
+  },
+  "license": "MIT",
+  "icon": "assets/pw_groundworks_asphalt/textures/item/asphalt_paver.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.piotrek.groundworksasphalt.GroundworksAsphaltMod"
+    ],
+    "client": [
+      "com.piotrek.groundworksasphalt.client.GroundworksAsphaltClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*",
+    "pw_groundworks": ">=0.1.0"
+  },
+  "suggests": {
+    "pw_groundworks_excavator": "*",
+    "pw_groundworks_bulldozer": "*",
+    "pw_groundworks_dump_truck": "*"
+  }
+}
