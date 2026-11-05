@@ -138,9 +138,18 @@ public class RoadRollerEntity extends Entity {
                     inputThrottle = vanilla.forward() ? 1.0F : vanilla.backward() ? -1.0F : 0.0F;
                     inputSteer = vanilla.left() ? -1.0F : vanilla.right() ? 1.0F : 0.0F;
                 }
+                if (Math.abs(inputThrottle) < 0.01F) {
+                    if (vanilla.forward()) inputThrottle = 1.0F;
+                    else if (vanilla.backward()) inputThrottle = -1.0F;
+                }
+                if (Math.abs(inputSteer) < 0.01F) {
+                    if (vanilla.left()) inputSteer = -1.0F;
+                    else if (vanilla.right()) inputSteer = 1.0F;
+                }
             } else {
                 inputThrottle = 0.0F;
                 inputSteer = 0.0F;
+                inputFreshTicks = 0;
             }
 
             this.entityData.set(ENGINE_RUNNING, hasDriver);
@@ -152,9 +161,11 @@ public class RoadRollerEntity extends Entity {
             this.entityData.set(STEER_ANGLE, newSteer);
 
             // Vehicle heading and drive speed
-            if (Math.abs(inputThrottle) > 0.01F) {
+            if (Math.abs(inputThrottle) > 0.01F && Math.abs(newSteer) > 0.001F) {
                 float yawChange = newSteer * inputThrottle * 2.8F;
-                this.setYRot(this.getYRot() + yawChange);
+                this.setYRot(Mth.wrapDegrees(this.getYRot() + yawChange));
+                this.setYHeadRot(this.getYRot());
+                this.setYBodyRot(this.getYRot());
             }
 
             double yawRad = Math.toRadians(this.getYRot());
@@ -166,20 +177,31 @@ public class RoadRollerEntity extends Entity {
             // Gravity
             if (!this.onGround()) {
                 motion = motion.add(0.0D, -0.25D, 0.0D);
+            } else {
+                motion = motion.add(0.0D, -0.04D, 0.0D);
             }
 
+            Vec3 beforeMove = this.position();
+            this.setDeltaMovement(motion);
             this.move(MoverType.SELF, motion);
 
-            Vec3 actualMotion = this.getDeltaMovement();
-            float fwdSpeed = (float) Math.sqrt(actualMotion.x * actualMotion.x + actualMotion.z * actualMotion.z);
+            Vec3 moved = this.position().subtract(beforeMove);
+            float fwdSpeed = (float) Math.sqrt(moved.x * moved.x + moved.z * moved.z);
             this.entityData.set(FORWARD_SPEED, fwdSpeed);
 
-            if (fwdSpeed > 0.001F) {
-                float rotDelta = fwdSpeed * 1.2F * (inputThrottle < 0 ? -1.0F : 1.0F);
+            if (fwdSpeed > 0.001F || Math.abs(targetSpeed) > 0.001F) {
+                float rollSpeed = fwdSpeed > 0.001F ? fwdSpeed : Math.abs(targetSpeed);
+                float rotDelta = rollSpeed * 1.5F * (inputThrottle < 0 ? -1.0F : 1.0F);
                 this.wheelRot += rotDelta;
                 this.drumRot += rotDelta;
                 this.entityData.set(WHEEL_ROTATION, this.wheelRot);
                 this.entityData.set(DRUM_ROTATION, this.drumRot);
+            }
+
+            if (hasDriver || fwdSpeed > 0.001F || Math.abs(inputThrottle) > 0.01F || Math.abs(inputSteer) > 0.01F) {
+                this.syncPosition = true;
+                this.needsSync = true;
+                this.syncVelocity = true;
             }
 
             // Compaction logic
@@ -311,6 +333,31 @@ public class RoadRollerEntity extends Entity {
         this.ejectPassengers();
         this.discard();
         return true;
+    }
+
+    @Override
+    public boolean canCollideWith(Entity other) {
+        return false;
+    }
+
+    @Override
+    public boolean canBeCollidedWith(@Nullable Entity other) {
+        return other != null && !this.hasPassenger(other);
+    }
+
+    @Override
+    public boolean isClientAuthoritative() {
+        return false;
+    }
+
+    @Override
+    protected boolean isLocalClientAuthoritative() {
+        return false;
+    }
+
+    @Override
+    public float maxUpStep() {
+        return 0.85F;
     }
 
     @Override

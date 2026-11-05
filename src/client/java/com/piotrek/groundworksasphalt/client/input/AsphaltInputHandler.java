@@ -8,6 +8,7 @@ import com.piotrek.groundworksasphalt.network.AsphaltInputPayload;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
+import org.lwjgl.sdl.SDLGamepad;
 
 /**
  * Gathers operator keyboard inputs each client tick and transmits control packets to the server.
@@ -72,6 +73,53 @@ public final class AsphaltInputHandler {
 
             if (auxLeft) aux -= 1.0F;
             if (auxRight) aux += 1.0F;
+
+            // ── GAMEPAD ANALOG INPUT OVERLAY ──
+            boolean hasGamepad = GamepadController.poll();
+            if (hasGamepad) {
+                // Triggers: RT = Forward, LT = Reverse
+                float gpThrottle = GamepadController.getTrigger(SDLGamepad.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER)
+                                 - GamepadController.getTrigger(SDLGamepad.SDL_GAMEPAD_AXIS_LEFT_TRIGGER);
+
+                // Left Stick X = Steering
+                float gpSteer = GamepadController.getAxis(SDLGamepad.SDL_GAMEPAD_AXIS_LEFTX);
+
+                // Left Stick Y fallback for throttle if triggers are neutral
+                float leftY = -GamepadController.getAxis(SDLGamepad.SDL_GAMEPAD_AXIS_LEFTY);
+                if (Math.abs(leftY) > 0.05F && Math.abs(gpThrottle) < 0.05F) {
+                    gpThrottle = leftY;
+                }
+
+                // Bumpers: LB / RB = Steering
+                if (GamepadController.isButtonDown(SDLGamepad.SDL_GAMEPAD_BUTTON_LEFT_SHOULDER)) gpSteer -= 1.0F;
+                if (GamepadController.isButtonDown(SDLGamepad.SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER)) gpSteer += 1.0F;
+
+                // Right Stick: Y = Lift/Height, X = Aux (Tilt/Angle/Width)
+                float gpLift = -GamepadController.getAxis(SDLGamepad.SDL_GAMEPAD_AXIS_RIGHTY);
+                float gpAux = GamepadController.getAxis(SDLGamepad.SDL_GAMEPAD_AXIS_RIGHTX);
+
+                // D-Pad micro adjustments
+                if (GamepadController.isButtonDown(SDLGamepad.SDL_GAMEPAD_BUTTON_DPAD_UP)) gpLift += 1.0F;
+                if (GamepadController.isButtonDown(SDLGamepad.SDL_GAMEPAD_BUTTON_DPAD_DOWN)) gpLift -= 1.0F;
+                if (GamepadController.isButtonDown(SDLGamepad.SDL_GAMEPAD_BUTTON_DPAD_LEFT)) gpAux -= 1.0F;
+                if (GamepadController.isButtonDown(SDLGamepad.SDL_GAMEPAD_BUTTON_DPAD_RIGHT)) gpAux += 1.0F;
+
+                // Action buttons: A = Action 1 (e.g. vibration/heater toggle), X = Action 2 (e.g. spray/beacon)
+                if (GamepadController.consumeButtonClick(SDLGamepad.SDL_GAMEPAD_BUTTON_SOUTH)) {
+                    action1 = true;
+                    GamepadController.rumble(0.25F, 0.4F, 60);
+                }
+                if (GamepadController.consumeButtonClick(SDLGamepad.SDL_GAMEPAD_BUTTON_WEST)) {
+                    action2 = true;
+                    GamepadController.rumble(0.2F, 0.3F, 50);
+                }
+
+                // Apply analog axes if active
+                if (Math.abs(gpThrottle) > 0.01F) throttle = Math.clamp(gpThrottle, -1.0F, 1.0F);
+                if (Math.abs(gpSteer) > 0.01F) steer = Math.clamp(gpSteer, -1.0F, 1.0F);
+                if (Math.abs(gpLift) > 0.01F) lift = Math.clamp(gpLift, -1.0F, 1.0F);
+                if (Math.abs(gpAux) > 0.01F) aux = Math.clamp(gpAux, -1.0F, 1.0F);
+            }
 
             boolean changed = throttle != lastThrottle
                     || steer != lastSteer

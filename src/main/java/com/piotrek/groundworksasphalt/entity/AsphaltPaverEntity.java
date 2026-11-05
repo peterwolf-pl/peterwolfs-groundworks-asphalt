@@ -154,9 +154,18 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
                     inputThrottle = vanilla.forward() ? 1.0F : vanilla.backward() ? -1.0F : 0.0F;
                     inputSteer = vanilla.left() ? -1.0F : vanilla.right() ? 1.0F : 0.0F;
                 }
+                if (Math.abs(inputThrottle) < 0.01F) {
+                    if (vanilla.forward()) inputThrottle = 1.0F;
+                    else if (vanilla.backward()) inputThrottle = -1.0F;
+                }
+                if (Math.abs(inputSteer) < 0.01F) {
+                    if (vanilla.left()) inputSteer = -1.0F;
+                    else if (vanilla.right()) inputSteer = 1.0F;
+                }
             } else {
                 inputThrottle = 0.0F;
                 inputSteer = 0.0F;
+                inputFreshTicks = 0;
             }
 
             this.entityData.set(ENGINE_RUNNING, hasDriver);
@@ -179,7 +188,9 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
             float turnDrive = inputSteer * 2.0F;
 
             if (Math.abs(inputSteer) > 0.01F) {
-                this.setYRot(this.getYRot() + turnDrive);
+                this.setYRot(Mth.wrapDegrees(this.getYRot() + turnDrive));
+                this.setYHeadRot(this.getYRot());
+                this.setYBodyRot(this.getYRot());
             }
 
             double yawRad = Math.toRadians(this.getYRot());
@@ -188,18 +199,28 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
             Vec3 motion = forward.scale(forwardDrive);
             if (!this.onGround()) {
                 motion = motion.add(0.0D, -0.25D, 0.0D);
+            } else {
+                motion = motion.add(0.0D, -0.04D, 0.0D);
             }
 
+            Vec3 beforeMove = this.position();
+            this.setDeltaMovement(motion);
             this.move(MoverType.SELF, motion);
 
-            Vec3 actualMotion = this.getDeltaMovement();
-            double speed = Math.sqrt(actualMotion.x * actualMotion.x + actualMotion.z * actualMotion.z);
-            float fwdSpeed = (float) speed;
+            Vec3 moved = this.position().subtract(beforeMove);
+            float fwdSpeed = (float) Math.sqrt(moved.x * moved.x + moved.z * moved.z);
 
-            float leftTrack = fwdSpeed + (inputSteer > 0 ? 0.03F : 0.0F);
-            float rightTrack = fwdSpeed + (inputSteer < 0 ? 0.03F : 0.0F);
+            float baseTrackSpeed = fwdSpeed > 0.001F ? fwdSpeed : Math.abs(forwardDrive);
+            float leftTrack = (inputThrottle < 0 ? -baseTrackSpeed : baseTrackSpeed) + (inputSteer > 0 ? 0.04F : 0.0F);
+            float rightTrack = (inputThrottle < 0 ? -baseTrackSpeed : baseTrackSpeed) + (inputSteer < 0 ? 0.04F : 0.0F);
             this.entityData.set(LEFT_TRACK_SPEED, leftTrack);
             this.entityData.set(RIGHT_TRACK_SPEED, rightTrack);
+
+            if (hasDriver || fwdSpeed > 0.001F || Math.abs(inputThrottle) > 0.01F || Math.abs(inputSteer) > 0.01F) {
+                this.syncPosition = true;
+                this.needsSync = true;
+                this.syncVelocity = true;
+            }
 
             // Automatic paving behind screed
             boolean shouldPave = (isPaving() || (hasDriver && inputThrottle > 0.0F))
@@ -364,6 +385,31 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
         this.ejectPassengers();
         this.discard();
         return true;
+    }
+
+    @Override
+    public boolean canCollideWith(Entity other) {
+        return false;
+    }
+
+    @Override
+    public boolean canBeCollidedWith(@Nullable Entity other) {
+        return other != null && !this.hasPassenger(other);
+    }
+
+    @Override
+    public boolean isClientAuthoritative() {
+        return false;
+    }
+
+    @Override
+    protected boolean isLocalClientAuthoritative() {
+        return false;
+    }
+
+    @Override
+    public float maxUpStep() {
+        return 1.0F;
     }
 
     @Override
