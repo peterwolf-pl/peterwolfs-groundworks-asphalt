@@ -428,7 +428,7 @@ public class CatGraderModel extends EntityModel<CatGraderRenderState> {
     @Override
     public void setupAnim(CatGraderRenderState state) {
         // 1. Wheel drive rotation (all 6 wheels rotate continuously while driving)
-        float spin = state.wheelSpin;
+        float spin = -state.wheelSpin;
         this.frontLeftWheel.xRot = spin;
         this.frontRightWheel.xRot = spin;
         this.midLeftWheel.xRot = spin;

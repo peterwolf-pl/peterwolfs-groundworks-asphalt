@@ -365,8 +365,8 @@ public class AsphaltPaverModel extends EntityModel<AsphaltPaverRenderState> {
         super.setupAnim(state);
 
         // 1. Crawler tracks animation
-        float leftTravel = state.leftTrackTravel;
-        float rightTravel = state.rightTrackTravel;
+        float leftTravel = -state.leftTrackTravel;
+        float rightTravel = -state.rightTrackTravel;
         this.leftIdler.xRot = leftTravel * 0.15F;
         this.leftSprocket.xRot = leftTravel * 0.15F;
         this.rightIdler.xRot = rightTravel * 0.15F;

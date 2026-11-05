@@ -4,6 +4,7 @@ import com.piotrek.groundworks.api.container.IGranularContainer;
 import com.piotrek.groundworks.api.material.GranularMaterial;
 import com.piotrek.groundworks.api.material.GranularMaterialRegistry;
 import com.piotrek.groundworksasphalt.GroundworksAsphaltMod;
+import com.piotrek.groundworksasphalt.block.CompactedAsphaltBlock;
 import com.piotrek.groundworksasphalt.block.FreshAsphaltBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -46,6 +47,7 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
 
     public static final int MAX_HOPPER_CAPACITY_UNITS = 16384; // ~32 cubic meters of hot mix
     public static final int UNITS_PER_BLOCK = 512;
+    public static final int UNITS_PER_LAYER = 64; // 1/8 block layer = 64 units
 
     // ── Synched Entity Data ───────────────────────────────────────────
     private static final EntityDataAccessor<Float> VEHICLE_PITCH =
@@ -225,7 +227,7 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
             // Automatic paving behind screed
             boolean shouldPave = (isPaving() || (hasDriver && inputThrottle > 0.0F))
                     && getScreedHeight() < 0.25F
-                    && this.storedAsphaltUnits >= UNITS_PER_BLOCK;
+                    && this.storedAsphaltUnits >= UNITS_PER_LAYER;
 
             if (shouldPave) {
                 paveAsphaltCourse(serverLevel, forward);
@@ -234,7 +236,7 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
     }
 
     /**
-     * Lays a 3-block wide course of fresh hot asphalt behind the floating screed.
+     * Lays a 3-block wide course of fresh hot asphalt behind the floating screed in max 1/8 block layer.
      */
     private void paveAsphaltCourse(ServerLevel level, Vec3 forward) {
         // Screed trailing location: ~2.4m behind machine pivot
@@ -250,29 +252,39 @@ public class AsphaltPaverEntity extends Entity implements IGranularContainer {
 
             // Find valid paving layer (ground surface)
             BlockPos placementPos = null;
-            for (int dy = 0; dy >= -1; dy--) {
+            for (int dy = 1; dy >= -1; dy--) {
                 BlockPos candidate = targetPos.above(dy);
                 BlockState candidateState = level.getBlockState(candidate);
                 BlockState belowState = level.getBlockState(candidate.below());
 
+                // If candidate is already asphalt (fresh or compacted), do not lay another layer (max 1/8 block layer)
+                if (candidateState.getBlock() instanceof FreshAsphaltBlock
+                        || candidateState.getBlock() instanceof CompactedAsphaltBlock) {
+                    break;
+                }
+
                 if ((candidateState.isAir() || candidateState.canBeReplaced())
                         && belowState.isSolid()
-                        && !(belowState.getBlock() instanceof FreshAsphaltBlock)) {
+                        && !(belowState.getBlock() instanceof FreshAsphaltBlock)
+                        && !(belowState.getBlock() instanceof CompactedAsphaltBlock)) {
                     placementPos = candidate;
                     break;
                 }
             }
 
-            if (placementPos != null && this.storedAsphaltUnits >= UNITS_PER_BLOCK) {
-                level.setBlockAndUpdate(placementPos, GroundworksAsphaltMod.FRESH_ASPHALT.defaultBlockState());
-                this.storedAsphaltUnits -= UNITS_PER_BLOCK;
+            if (placementPos != null && this.storedAsphaltUnits >= UNITS_PER_LAYER) {
+                level.setBlockAndUpdate(
+                        placementPos,
+                        GroundworksAsphaltMod.FRESH_ASPHALT.defaultBlockState().setValue(FreshAsphaltBlock.LAYERS, 1)
+                );
+                this.storedAsphaltUnits -= UNITS_PER_LAYER;
                 updateFillRatio();
                 placedAny = true;
 
                 // Hot asphalt steam & smoke emission
                 level.sendParticles(
                         ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                        placementPos.getX() + 0.5D, placementPos.getY() + 1.05D, placementPos.getZ() + 0.5D,
+                        placementPos.getX() + 0.5D, placementPos.getY() + 0.15D, placementPos.getZ() + 0.5D,
                         2,
                         0.25D, 0.05D, 0.25D,
                         0.01D

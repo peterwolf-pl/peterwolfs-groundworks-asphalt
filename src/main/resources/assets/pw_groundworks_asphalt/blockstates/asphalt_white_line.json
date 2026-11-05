@@ -1,16 +1,114 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,layers=1": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height2"
+    },
+    "facing=south,layers=1": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height2"
+    },
+    "facing=east,layers=1": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height2",
+      "y": 90
+    },
+    "facing=west,layers=1": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height2",
+      "y": 90
+    },
+    "facing=north,layers=2": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height4"
+    },
+    "facing=south,layers=2": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height4"
+    },
+    "facing=east,layers=2": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height4",
+      "y": 90
+    },
+    "facing=west,layers=2": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height4",
+      "y": 90
+    },
+    "facing=north,layers=3": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height6"
+    },
+    "facing=south,layers=3": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height6"
+    },
+    "facing=east,layers=3": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height6",
+      "y": 90
+    },
+    "facing=west,layers=3": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height6",
+      "y": 90
+    },
+    "facing=north,layers=4": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height8"
+    },
+    "facing=south,layers=4": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height8"
+    },
+    "facing=east,layers=4": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height8",
+      "y": 90
+    },
+    "facing=west,layers=4": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height8",
+      "y": 90
+    },
+    "facing=north,layers=5": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height10"
+    },
+    "facing=south,layers=5": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height10"
+    },
+    "facing=east,layers=5": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height10",
+      "y": 90
+    },
+    "facing=west,layers=5": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height10",
+      "y": 90
+    },
+    "facing=north,layers=6": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height12"
+    },
+    "facing=south,layers=6": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height12"
+    },
+    "facing=east,layers=6": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height12",
+      "y": 90
+    },
+    "facing=west,layers=6": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height12",
+      "y": 90
+    },
+    "facing=north,layers=7": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height14"
+    },
+    "facing=south,layers=7": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height14"
+    },
+    "facing=east,layers=7": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height14",
+      "y": 90
+    },
+    "facing=west,layers=7": {
+      "model": "pw_groundworks_asphalt:block/asphalt_white_line_height14",
+      "y": 90
+    },
+    "facing=north,layers=8": {
       "model": "pw_groundworks_asphalt:block/asphalt_white_line"
     },
-    "facing=south": {
+    "facing=south,layers=8": {
       "model": "pw_groundworks_asphalt:block/asphalt_white_line"
     },
-    "facing=east": {
+    "facing=east,layers=8": {
       "model": "pw_groundworks_asphalt:block/asphalt_white_line",
       "y": 90
     },
-    "facing=west": {
+    "facing=west,layers=8": {
       "model": "pw_groundworks_asphalt:block/asphalt_white_line",
       "y": 90
     }

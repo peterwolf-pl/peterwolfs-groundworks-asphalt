@@ -51,9 +51,9 @@ public class RoadRollerModel extends EntityModel<RoadRollerRenderState> {
         this.frontAssembly.yRot = state.steerAngle;
 
         // 2. Drive Rotation (rear wheels and front drum)
-        this.rearLeftWheel.xRot = state.wheelRotation;
-        this.rearRightWheel.xRot = state.wheelRotation;
-        this.drum.xRot = state.drumRotation;
+        this.rearLeftWheel.xRot = -state.wheelRotation;
+        this.rearRightWheel.xRot = -state.wheelRotation;
+        this.drum.xRot = -state.drumRotation;
 
         // 3. Vibratory Compaction Oscillation
         if (state.isCompacting || state.isVibrating) {

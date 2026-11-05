@@ -231,7 +231,7 @@ public class RoadRollerEntity extends Entity {
                     // Compaction effects
                     level.sendParticles(
                             ParticleTypes.POOF,
-                            targetPos.getX() + 0.5D, targetPos.getY() + 1.05D, targetPos.getZ() + 0.5D,
+                            targetPos.getX() + 0.5D, targetPos.getY() + 0.15D, targetPos.getZ() + 0.5D,
                             3,
                             0.25D, 0.05D, 0.25D,
                             0.02D
@@ -240,7 +240,7 @@ public class RoadRollerEntity extends Entity {
                     if (isWaterSpraying()) {
                         level.sendParticles(
                                 ParticleTypes.SPLASH,
-                                targetPos.getX() + 0.5D, targetPos.getY() + 1.02D, targetPos.getZ() + 0.5D,
+                                targetPos.getX() + 0.5D, targetPos.getY() + 0.15D, targetPos.getZ() + 0.5D,
                                 4,
                                 0.2D, 0.02D, 0.2D,
                                 0.01D
