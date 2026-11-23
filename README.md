@@ -17,7 +17,7 @@ Submod do ekosystemu **Peterwolf's Groundworks** wprowadzający realistyczne mas
 - Przedni kosz zasypowy z hydraulicznymi składanymi skrzydłami (pojemność na masę bitumiczną dowożoną z wywrotek Groundworks lub ładowarek).
 - Centralny tunel ze ślimakami rozprowadzającymi masę.
 - Zadaszony pomost operatora z dwoma obrotowymi fotelami.
-- Tylny pływający stół zagęszczający (screed) o szerokości 3 bloków, układający pas gorącego, parującego świeżego asfaltu.
+- Tylny pływający stół zagęszczający (screed) o szerokości 5 bloków, układający pas gorącego, parującego świeżego asfaltu po krzywiźnie terenu.
 
 ### 3. Road Roller 16T (Walec Drogowy)
 - Przedni ciężki stalowy bęben wibracyjny w potężnym jarzmie ze zgarniaczami i zraszaczami.

@@ -25,5 +25,12 @@
       "minecraft:item/shovel/flatten"
     ],
     "subtitle": "subtitles.pw_groundworks_asphalt.grader_scrape"
+  },
+  "vehicle_horn": {
+    "category": "players",
+    "sounds": [
+      "pw_groundworks_asphalt:vehicle_horn"
+    ],
+    "subtitle": "subtitles.pw_groundworks_asphalt.vehicle_horn"
   }
 }

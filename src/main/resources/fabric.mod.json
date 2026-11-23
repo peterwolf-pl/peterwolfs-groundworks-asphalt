@@ -26,7 +26,7 @@
     "minecraft": "~26.3",
     "java": ">=25",
     "fabric-api": "*",
-    "pw_groundworks": ">=0.1.0"
+    "pw_groundworks": ">=0.3.2"
   },
   "suggests": {
     "pw_groundworks_excavator": "*",

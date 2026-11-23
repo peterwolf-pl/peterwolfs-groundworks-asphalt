@@ -1,5 +1,6 @@
 package com.piotrek.groundworksasphalt.block;
 
+import com.piotrek.groundworks.GroundworksMod;
 import com.piotrek.groundworksasphalt.GroundworksAsphaltMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -73,8 +74,9 @@ public class FreshAsphaltBlock extends Block {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockState belowState = level.getBlockState(pos.below());
-        return belowState.isSolid();
+        BlockPos belowPos = pos.below();
+        BlockState belowState = level.getBlockState(belowPos);
+        return !belowState.isAir() && !belowState.canBeReplaced();
     }
 
     @Override

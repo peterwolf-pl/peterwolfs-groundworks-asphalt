@@ -82,7 +82,9 @@ public class CatGraderRenderer extends EntityRenderer<CatGraderEntity, CatGrader
             stack.rotateDegrees(Axis.XP, state.basePitch);
         }
         if (Math.abs(state.baseRoll) > 0.01F) {
-            stack.rotateDegrees(Axis.ZP, state.baseRoll);
+            // Movement roll is atan2(leftY - rightY): positive means left side is higher.
+            // ZP runs before scale(-1, -1, 1) which mirrors X, so negate it so a wheel in a hole drops that side.
+            stack.rotateDegrees(Axis.ZP, -state.baseRoll);
         }
 
         // Standard Minecraft entity model coordinate transform

@@ -14,17 +14,22 @@
   "item.pw_groundworks_asphalt.asphalt_mix": "Hot Asphalt Mix",
   "item.pw_groundworks_asphalt.cat_grader": "Cat Motor Grader",
   "item.pw_groundworks_asphalt.asphalt_paver": "Asphalt Paver",
-  "item.pw_groundworks_asphalt.road_roller": "16T Heavy Road Roller",
+  "item.pw_groundworks_asphalt.road_roller": "16T Soil Compactor",
+  "item.pw_groundworks_asphalt.asphalt_roller": "14T Tandem Asphalt Roller",
+  "item.pw_groundworks_asphalt.road_stake": "Road Survey Stake",
 
   "entity.pw_groundworks_asphalt.cat_grader": "Cat Motor Grader",
   "entity.pw_groundworks_asphalt.asphalt_paver": "Asphalt Paver",
-  "entity.pw_groundworks_asphalt.road_roller": "16T Heavy Road Roller",
+  "entity.pw_groundworks_asphalt.road_roller": "16T Soil Compactor",
+  "entity.pw_groundworks_asphalt.asphalt_roller": "14T Tandem Asphalt Roller",
+  "entity.pw_groundworks_asphalt.road_stake": "Road Survey Stake",
 
   "subtitles.pw_groundworks_asphalt.engine_loop": "Machinery engine running",
   "subtitles.pw_groundworks_asphalt.engine_load": "Machinery engine straining",
   "subtitles.pw_groundworks_asphalt.roller_vibrate": "Road roller vibratory drum rumbling",
   "subtitles.pw_groundworks_asphalt.paver_screed": "Asphalt paver screed laying hot mat",
   "subtitles.pw_groundworks_asphalt.grader_scrape": "Grader blade cutting terrain",
+  "subtitles.pw_groundworks_asphalt.vehicle_horn": "Vehicle horn honks",
 
   "category.pw_groundworks_asphalt.controls": "Groundworks Asphalt",
   "key.pw_groundworks_asphalt.tool_lift_up": "Raise Attachment / Blade",
@@ -32,5 +37,16 @@
   "key.pw_groundworks_asphalt.tool_aux_left": "Rotate Blade / Tool Left",
   "key.pw_groundworks_asphalt.tool_aux_right": "Rotate Blade / Tool Right",
   "key.pw_groundworks_asphalt.action_1": "Toggle Action 1 (Vibrate / Pave / Grade)",
-  "key.pw_groundworks_asphalt.action_2": "Toggle Action 2 (Water / Hopper / Ripper)"
+  "key.pw_groundworks_asphalt.action_2": "Toggle Action 2 (Water / Hopper / Ripper)",
+  "key.pw_groundworks_asphalt.horn": "Vehicle Horn",
+  "key.pw_groundworks_asphalt.blade_mode": "Toggle Blade Mode (Angle / Leveling)",
+  "key.pw_groundworks_asphalt.lights": "Toggle Work Lights",
+
+  "message.pw_groundworks_asphalt.grader_blade_mode_roll": "§6[Grader] §fBlade Mode: §eLeveling / Cross-Slope (Roll)",
+  "message.pw_groundworks_asphalt.grader_blade_mode_angle": "§6[Grader] §fBlade Mode: §aRotation Angle (Yaw)",
+  "message.pw_groundworks_asphalt.grader_autolevel_disabled_manual": "§6[Grader] §cAutolevel disabled (manual input)",
+
+  "command.pw_groundworks_asphalt.grader_not_found": "§cNo Cat Grader found nearby or being driven.",
+  "command.pw_groundworks_asphalt.grader_autolevel_on": "§6[Cat Grader] §aAutolevel ENABLED (blade maintains level cut).",
+  "command.pw_groundworks_asphalt.grader_autolevel_off": "§6[Cat Grader] §cAutolevel DISABLED."
 }

@@ -14,17 +14,22 @@
   "item.pw_groundworks_asphalt.asphalt_mix": "Gorąca mieszanka mineralno-asfaltowa",
   "item.pw_groundworks_asphalt.cat_grader": "Równiarka drogowa Cat",
   "item.pw_groundworks_asphalt.asphalt_paver": "Rozściełacz asfaltu",
-  "item.pw_groundworks_asphalt.road_roller": "Walec drogowy 16T",
+  "item.pw_groundworks_asphalt.road_roller": "Zagęszczarka do gruntu 16T",
+  "item.pw_groundworks_asphalt.asphalt_roller": "Walec do asfaltu 14T",
+  "item.pw_groundworks_asphalt.road_stake": "Tyczka geodezyjna drogowa",
 
   "entity.pw_groundworks_asphalt.cat_grader": "Równiarka drogowa Cat",
   "entity.pw_groundworks_asphalt.asphalt_paver": "Rozściełacz asfaltu",
-  "entity.pw_groundworks_asphalt.road_roller": "Walec drogowy 16T",
+  "entity.pw_groundworks_asphalt.road_roller": "Zagęszczarka do gruntu 16T",
+  "entity.pw_groundworks_asphalt.asphalt_roller": "Walec do asfaltu 14T",
+  "entity.pw_groundworks_asphalt.road_stake": "Tyczka geodezyjna drogowa",
 
   "subtitles.pw_groundworks_asphalt.engine_loop": "Praca silnika maszyny",
   "subtitles.pw_groundworks_asphalt.engine_load": "Silnik maszyny pod obciążeniem",
   "subtitles.pw_groundworks_asphalt.roller_vibrate": "Dudnienie bębna wibracyjnego walca",
   "subtitles.pw_groundworks_asphalt.paver_screed": "Stół rozściełacza układa gorącą masę",
   "subtitles.pw_groundworks_asphalt.grader_scrape": "Lemiesz równiarki skrawa podłoże",
+  "subtitles.pw_groundworks_asphalt.vehicle_horn": "Klakson pojazdu trąbi",
 
   "category.pw_groundworks_asphalt.controls": "Groundworks Asphalt",
   "key.pw_groundworks_asphalt.tool_lift_up": "Podnieś osprzęt / lemiesz",
@@ -32,5 +37,16 @@
   "key.pw_groundworks_asphalt.tool_aux_left": "Obrót lemiesza / narzędzia w lewo",
   "key.pw_groundworks_asphalt.tool_aux_right": "Obrót lemiesza / narzędzia w prawo",
   "key.pw_groundworks_asphalt.action_1": "Przełącz akcję 1 (Wibracja / Układanie / Równanie)",
-  "key.pw_groundworks_asphalt.action_2": "Przełącz akcję 2 (Zraszanie / Kosz / Zrywak)"
+  "key.pw_groundworks_asphalt.action_2": "Przełącz akcję 2 (Zraszanie / Kosz / Zrywak)",
+  "key.pw_groundworks_asphalt.horn": "Klakson pojazdu",
+  "key.pw_groundworks_asphalt.blade_mode": "Przełącz tryb lemiesza (Kąt / Poziomowanie)",
+  "key.pw_groundworks_asphalt.lights": "Przełącz światła robocze",
+
+  "message.pw_groundworks_asphalt.grader_blade_mode_roll": "§6[Równiarka] §fSterowanie lemieszem: §ePoziomowanie / Pochylenie poprzeczne (Roll)",
+  "message.pw_groundworks_asphalt.grader_blade_mode_angle": "§6[Równiarka] §fSterowanie lemieszem: §aKąt obrotu lemiesza (Yaw)",
+  "message.pw_groundworks_asphalt.grader_autolevel_disabled_manual": "§6[Równiarka] §cAutopoziomowanie wyłączone (ręczna korekta)",
+
+  "command.pw_groundworks_asphalt.grader_not_found": "§cNie znaleziono równiarki w pobliżu ani nie kierujesz żadną.",
+  "command.pw_groundworks_asphalt.grader_autolevel_on": "§6[Równiarka Cat] §aAutopoziomowanie WŁĄCZONE (lemiesz sam utrzymuje poziom).",
+  "command.pw_groundworks_asphalt.grader_autolevel_off": "§6[Równiarka Cat] §cAutopoziomowanie WYŁĄCZONE."
 }

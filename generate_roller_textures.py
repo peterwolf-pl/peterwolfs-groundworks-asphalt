@@ -133,11 +133,11 @@ def generate_textures():
                     img.putpixel((x, y), (25, 28, 32, 255))
                 else:
                     diag = t_x * 0.7 + t_y * 0.3
-                    ref = 60.0 if (0.4 < diag < 0.6) else 0.0
-                    r = int(min(255, 70 + ref))
-                    g = int(min(255, 105 + ref * 1.1))
-                    b_val = int(min(255, 135 + ref * 1.2))
-                    img.putpixel((x, y), (r, g, b_val, 250))
+                    alpha = 65 if (0.4 < diag < 0.6) else 38
+                    r = 220 if (0.4 < diag < 0.6) else 140
+                    g = 245 if (0.4 < diag < 0.6) else 210
+                    b_val = 255 if (0.4 < diag < 0.6) else 245
+                    img.putpixel((x, y), (r, g, b_val, alpha))
 
     def draw_beacon(x0, y0, x1, y1):
         for y in range(y0, y1):

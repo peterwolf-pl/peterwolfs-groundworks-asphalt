@@ -2,6 +2,7 @@ package com.piotrek.groundworksasphalt.client.input;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.piotrek.groundworksasphalt.entity.AsphaltPaverEntity;
+import com.piotrek.groundworksasphalt.entity.AsphaltRollerEntity;
 import com.piotrek.groundworksasphalt.entity.CatGraderEntity;
 import com.piotrek.groundworksasphalt.entity.RoadRollerEntity;
 import com.piotrek.groundworksasphalt.network.AsphaltInputPayload;
@@ -19,6 +20,7 @@ public final class AsphaltInputHandler {
     private static float lastSteer;
     private static float lastLift;
     private static float lastAux;
+    private static boolean lastHorn;
     private static int keepaliveTicks;
 
     private AsphaltInputHandler() {}
@@ -29,7 +31,7 @@ public final class AsphaltInputHandler {
         }
 
         Entity vehicle = client.player.getVehicle();
-        if (vehicle instanceof RoadRollerEntity || vehicle instanceof AsphaltPaverEntity || vehicle instanceof CatGraderEntity) {
+        if (vehicle instanceof RoadRollerEntity || vehicle instanceof AsphaltRollerEntity || vehicle instanceof AsphaltPaverEntity || vehicle instanceof CatGraderEntity) {
             boolean inGame = client.mouseHandler != null && client.mouseHandler.isMouseGrabbed();
 
             boolean keyForward = (client.options.keyUp != null && client.options.keyUp.isDown())
@@ -57,6 +59,11 @@ public final class AsphaltInputHandler {
 
             boolean action1 = AsphaltKeyBindings.KEY_ACTION_1 != null && AsphaltKeyBindings.KEY_ACTION_1.consumeClick();
             boolean action2 = AsphaltKeyBindings.KEY_ACTION_2 != null && AsphaltKeyBindings.KEY_ACTION_2.consumeClick();
+            boolean horn = (AsphaltKeyBindings.KEY_HORN != null && AsphaltKeyBindings.KEY_HORN.isDown())
+                    || (inGame && InputConstants.isKeyDown(InputConstants.KEY_C));
+            boolean auxMode = (AsphaltKeyBindings.KEY_BLADE_MODE != null && AsphaltKeyBindings.KEY_BLADE_MODE.consumeClick())
+                    || (inGame && InputConstants.isKeyDown(InputConstants.KEY_Z));
+            boolean toggleLights = (AsphaltKeyBindings.KEY_LIGHTS != null && AsphaltKeyBindings.KEY_LIGHTS.consumeClick());
 
             float throttle = 0.0F;
             float steer = 0.0F;
@@ -113,6 +120,10 @@ public final class AsphaltInputHandler {
                     action2 = true;
                     GamepadController.rumble(0.2F, 0.3F, 50);
                 }
+                if (GamepadController.consumeButtonClick(SDLGamepad.SDL_GAMEPAD_BUTTON_NORTH)) {
+                    toggleLights = true;
+                    GamepadController.rumble(0.15F, 0.25F, 40);
+                }
 
                 // Apply analog axes if active
                 if (Math.abs(gpThrottle) > 0.01F) throttle = Math.clamp(gpThrottle, -1.0F, 1.0F);
@@ -125,18 +136,22 @@ public final class AsphaltInputHandler {
                     || steer != lastSteer
                     || lift != lastLift
                     || aux != lastAux
+                    || horn != lastHorn
                     || action1
-                    || action2;
+                    || action2
+                    || auxMode
+                    || toggleLights;
 
             if (changed || --keepaliveTicks <= 0) {
                 ClientPlayNetworking.send(new AsphaltInputPayload(
-                        throttle, steer, lift, aux, action1, action2
+                        throttle, steer, lift, aux, action1, action2, horn, auxMode, toggleLights
                 ));
 
                 lastThrottle = throttle;
                 lastSteer = steer;
                 lastLift = lift;
                 lastAux = aux;
+                lastHorn = horn;
                 keepaliveTicks = 4;
             }
         } else {

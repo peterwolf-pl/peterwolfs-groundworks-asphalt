@@ -4,15 +4,19 @@ import com.piotrek.groundworksasphalt.block.AsphaltSlabBlock;
 import com.piotrek.groundworksasphalt.block.CompactedAsphaltBlock;
 import com.piotrek.groundworksasphalt.block.FreshAsphaltBlock;
 import com.piotrek.groundworksasphalt.block.RoadLineBlock;
+import com.piotrek.groundworksasphalt.command.CatGraderCommand;
 import com.piotrek.groundworksasphalt.entity.AsphaltPaverEntity;
+import com.piotrek.groundworksasphalt.entity.AsphaltRollerEntity;
 import com.piotrek.groundworksasphalt.entity.CatGraderEntity;
 import com.piotrek.groundworksasphalt.entity.RoadRollerEntity;
 import com.piotrek.groundworksasphalt.item.AsphaltMixItem;
 import com.piotrek.groundworksasphalt.item.AsphaltPaverItem;
+import com.piotrek.groundworksasphalt.item.AsphaltRollerItem;
 import com.piotrek.groundworksasphalt.item.CatGraderItem;
 import com.piotrek.groundworksasphalt.item.RoadRollerItem;
 import com.piotrek.groundworksasphalt.network.AsphaltInputPayload;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -182,6 +186,20 @@ public class GroundworksAsphaltMod implements ModInitializer {
             new RoadRollerItem(new Item.Properties().setId(ROAD_ROLLER_ITEM_KEY).stacksTo(1))
     );
 
+    public static final ResourceKey<Item> ASPHALT_ROLLER_ITEM_KEY = itemKey("asphalt_roller");
+    public static final AsphaltRollerItem ASPHALT_ROLLER_ITEM = Registry.register(
+            BuiltInRegistries.ITEM,
+            ASPHALT_ROLLER_ITEM_KEY,
+            new AsphaltRollerItem(new Item.Properties().setId(ASPHALT_ROLLER_ITEM_KEY).stacksTo(1))
+    );
+
+    public static final ResourceKey<Item> ROAD_STAKE_ITEM_KEY = itemKey("road_stake");
+    public static final com.piotrek.groundworksasphalt.item.RoadStakeItem ROAD_STAKE_ITEM = Registry.register(
+            BuiltInRegistries.ITEM,
+            ROAD_STAKE_ITEM_KEY,
+            new com.piotrek.groundworksasphalt.item.RoadStakeItem(new Item.Properties().setId(ROAD_STAKE_ITEM_KEY).stacksTo(16))
+    );
+
     // ── Entity Types ──────────────────────────────────────────────────
     public static final ResourceKey<EntityType<?>> CAT_GRADER_KEY = entityKey("cat_grader");
     public static final EntityType<CatGraderEntity> CAT_GRADER = Registry.register(
@@ -213,10 +231,31 @@ public class GroundworksAsphaltMod implements ModInitializer {
                     .build(ROAD_ROLLER_KEY)
     );
 
+    public static final ResourceKey<EntityType<?>> ASPHALT_ROLLER_KEY = entityKey("asphalt_roller");
+    public static final EntityType<AsphaltRollerEntity> ASPHALT_ROLLER = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE,
+            ASPHALT_ROLLER_KEY,
+            EntityType.Builder.<AsphaltRollerEntity>of(AsphaltRollerEntity::new, MobCategory.MISC)
+                    .sized(2.4F, 2.6F)
+                    .clientTrackingRange(10)
+                    .build(ASPHALT_ROLLER_KEY)
+    );
+
+    public static final ResourceKey<EntityType<?>> ROAD_STAKE_KEY = entityKey("road_stake");
+    public static final EntityType<com.piotrek.groundworksasphalt.entity.RoadStakeEntity> ROAD_STAKE = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE,
+            ROAD_STAKE_KEY,
+            EntityType.Builder.<com.piotrek.groundworksasphalt.entity.RoadStakeEntity>of(com.piotrek.groundworksasphalt.entity.RoadStakeEntity::new, MobCategory.MISC)
+                    .sized(0.4F, 1.4F)
+                    .clientTrackingRange(10)
+                    .build(ROAD_STAKE_KEY)
+    );
+
     // ── Sound Events ──────────────────────────────────────────────────
     public static final SoundEvent ROLLER_VIBRATE = registerSound("roller_vibrate");
     public static final SoundEvent PAVER_SCREED = registerSound("paver_screed");
     public static final SoundEvent GRADER_SCRAPE = registerSound("grader_scrape");
+    public static final SoundEvent VEHICLE_HORN = registerSound("vehicle_horn");
 
     private static SoundEvent registerSound(String name) {
         Identifier id = id(name);
@@ -251,20 +290,43 @@ public class GroundworksAsphaltMod implements ModInitializer {
                             roller.setControlInputs(
                                     payload.throttle(), payload.steer(),
                                     payload.toolLift(), payload.toolAux(),
-                                    payload.action1(), payload.action2()
+                                    payload.action1(), payload.action2(),
+                                    payload.horn()
+                            );
+                        } else if (player.getVehicle() instanceof AsphaltRollerEntity roller) {
+                            roller.setControlInputs(
+                                    payload.throttle(), payload.steer(),
+                                    payload.toolLift(), payload.toolAux(),
+                                    payload.action1(), payload.action2(),
+                                    payload.horn()
                             );
                         } else if (player.getVehicle() instanceof AsphaltPaverEntity paver) {
                             paver.setControlInputs(
                                     payload.throttle(), payload.steer(),
                                     payload.toolLift(), payload.toolAux(),
-                                    payload.action1(), payload.action2()
+                                    payload.action1(), payload.action2(),
+                                    payload.horn()
                             );
                         } else if (player.getVehicle() instanceof CatGraderEntity grader) {
                             grader.setControlInputs(
                                     payload.throttle(), payload.steer(),
                                     payload.toolLift(), payload.toolAux(),
-                                    payload.action1(), payload.action2()
+                                    payload.action1(), payload.action2(),
+                                    payload.horn(), payload.auxMode()
                             );
+                        }
+
+                        if (payload.toggleLights()) {
+                            if (player.getVehicle() instanceof RoadRollerEntity roller) {
+                                roller.setLightsOn(!roller.isLightsOn());
+                            } else if (player.getVehicle() instanceof AsphaltRollerEntity roller) {
+                                roller.setLightsOn(!roller.isLightsOn());
+                            } else if (player.getVehicle() instanceof AsphaltPaverEntity paver) {
+                                paver.setWorkLightsOn(!paver.isWorkLightsOn());
+                            } else if (player.getVehicle() instanceof CatGraderEntity grader) {
+                                grader.setLightsOn(!grader.isLightsOn());
+                            }
+                            player.level().playSound(null, player.getX(), player.getY(), player.getZ(), net.minecraft.sounds.SoundEvents.UI_BUTTON_CLICK.value(), net.minecraft.sounds.SoundSource.PLAYERS, 0.6F, 1.2F);
                         }
                     });
                 }
@@ -275,6 +337,8 @@ public class GroundworksAsphaltMod implements ModInitializer {
             output.accept(CAT_GRADER_ITEM);
             output.accept(ASPHALT_PAVER_ITEM);
             output.accept(ROAD_ROLLER_ITEM);
+            output.accept(ASPHALT_ROLLER_ITEM);
+            output.accept(ROAD_STAKE_ITEM);
             output.accept(ASPHALT_MIX);
             output.accept(FRESH_ASPHALT_ITEM);
             output.accept(COMPACTED_ASPHALT_ITEM);
@@ -287,6 +351,8 @@ public class GroundworksAsphaltMod implements ModInitializer {
             output.accept(CAT_GRADER_ITEM);
             output.accept(ASPHALT_PAVER_ITEM);
             output.accept(ROAD_ROLLER_ITEM);
+            output.accept(ASPHALT_ROLLER_ITEM);
+            output.accept(ROAD_STAKE_ITEM);
             output.accept(ASPHALT_MIX);
             output.accept(FRESH_ASPHALT_ITEM);
             output.accept(COMPACTED_ASPHALT_ITEM);
@@ -295,6 +361,14 @@ public class GroundworksAsphaltMod implements ModInitializer {
             output.accept(ASPHALT_YELLOW_LINE_ITEM);
         });
 
-        LOGGER.info("Groundworks Asphalt registered {} blocks, {} items, 3 vehicles.", 5, 9);
+        // 3. Server Commands
+        CommandRegistrationCallback.EVENT.register(
+                (dispatcher, registryAccess, environment) -> {
+                    CatGraderCommand.register(dispatcher);
+                    com.piotrek.groundworksasphalt.command.RoadCommand.register(dispatcher);
+                }
+        );
+
+        LOGGER.info("Groundworks Asphalt registered {} blocks, {} items, 4 vehicles.", 5, 10);
     }
 }

@@ -60,8 +60,8 @@ def create_paver_textures():
     c_railing_shadow = (175, 125, 0, 255)
 
     # Glass / windshield (tinted with alpha for translucent cutout)
-    c_tinted_glass = (120, 190, 225, 255)  # opaque in atlas to avoid transparent hole check
-    c_glass_frame = (25, 26, 28, 255)
+    c_tinted_glass = (140, 210, 245, 38)
+    c_glass_frame = (28, 29, 32, 255)
 
     # Lighting & Controls
     c_led_white = (245, 250, 255, 255)
@@ -221,8 +221,10 @@ def create_paver_textures():
     # Molded roof drip gutters
     draw.rectangle([45, 277, 130, 305], outline=c_yellow_groove)
 
-    # Windshield glass (tinted with frame)
-    paint_panel(136, 275, 45, 20, c_tinted_glass, (180, 230, 255, 255), c_glass_frame)
+    # Windshield glass (tinted with frame and reflection glint)
+    draw.rectangle([136, 275, 136 + 45, 275 + 20], fill=c_tinted_glass, outline=c_glass_frame)
+    draw.line([(140, 292), (160, 278)], fill=(220, 245, 255, 65), width=2)
+    draw.line([(165, 292), (175, 282)], fill=(220, 245, 255, 65), width=1)
 
     # LED headlight bar and lenses
     paint_panel(182, 275, 68, 15, c_led_frame, c_iron_light, c_dark_iron)

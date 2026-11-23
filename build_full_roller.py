@@ -269,14 +269,14 @@ def create_model_and_textures():
           -8.0, -1.0, 10.0, 16.0, 3.95, 4.5, "yellow_body", "Yoke central reinforcement arch")
 
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
-          -19.5, 3.0, 14.95, 3.0, 9.0, 21.0, "yellow_body", "Left yoke longitudinal side arm")
+          -19.5, 3.0, 14.95, 3.0, 9.0, 28.5, "yellow_body", "Left yoke longitudinal side arm")
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
           -20.5, 5.0, 25.0, 0.95, 6.0, 6.0, "chassis_dark", "Left drum axle bearing housing")
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
           -17.5, 4.05, 24.05, 1.25, 7.9, 7.9, "black_rubber", "Left drum rubber vibration isolator mounts")
 
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
-          16.5, 3.0, 14.95, 3.0, 9.0, 21.0, "yellow_body", "Right yoke longitudinal side arm")
+          16.5, 3.0, 14.95, 3.0, 9.0, 28.5, "yellow_body", "Right yoke longitudinal side arm")
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
           19.55, 5.0, 25.0, 0.95, 6.0, 6.0, "chassis_dark", "Right drum axle bearing housing")
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
@@ -285,14 +285,14 @@ def create_model_and_textures():
           18.5, 5.5, 25.5, 3.5, 5.0, 5.0, "chassis_dark", "Hydraulic vibration exciter motor")
 
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
-          -18.0, 3.0, 35.95, 36.0, 6.0, 5.6, "yellow_body", "Yoke front cross beam bumper")
+          -18.0, 3.0, 43.45, 36.0, 6.0, 5.6, "yellow_body", "Yoke front cross beam bumper")
 
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
-          -16.2, 10.5, 39.52, 32.4, 2.0, 1.0, "steel_dark", "Front mud scraper blade")
+          -16.2, 10.5, 41.8, 32.4, 2.0, 0.5, "steel_dark", "Front mud scraper blade")
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
-          -16.8, 6.0, 38.0, 1.0, 5.0, 3.0, "chassis_dark", "Front mud scraper left spring bracket")
+          -16.8, 6.0, 41.8, 1.0, 5.0, 1.65, "chassis_dark", "Front mud scraper left spring bracket")
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
-          15.8, 6.0, 38.0, 1.0, 5.0, 3.0, "chassis_dark", "Front mud scraper right spring bracket")
+          15.8, 6.0, 41.8, 1.0, 5.0, 1.65, "chassis_dark", "Front mud scraper right spring bracket")
 
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
           -16.2, 10.5, 15.48, 32.4, 2.0, 1.0, "steel_dark", "Rear mud scraper blade")
@@ -302,7 +302,7 @@ def create_model_and_textures():
           15.8, 6.0, 15.0, 1.0, 5.0, 3.0, "chassis_dark", "Rear mud scraper right spring bracket")
 
     add_b("front_assembly", "root", "frontAssembly", (0.0, 0.0, 0.0),
-          -16.0, 2.0, 38.0, 32.0, 1.2, 1.2, "steel_dark", "Water spray manifold bar")
+          -16.0, 2.0, 42.0, 32.0, 1.2, 1.2, "steel_dark", "Water spray manifold bar")
 
     # ==========================================
     # 5. FRONT VIBRATING STEEL DRUM (`drum`)

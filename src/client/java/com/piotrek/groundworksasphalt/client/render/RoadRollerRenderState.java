@@ -22,6 +22,7 @@ public class RoadRollerRenderState extends EntityRenderState {
     public boolean engineRunning = true;
     public boolean braking;
     public boolean waterSpraying;
+    public boolean workLightsOn;
 
     public float beaconSpin;
     public boolean beaconFlash;

@@ -239,22 +239,22 @@ public class AsphaltPaverModel extends EntityModel<AsphaltPaverRenderState> {
         // Left swivel operator seat
         platform.addOrReplaceChild("seat_left", /* PartPose.offset(-6.5F, 2.0F, -6.0F) */
                 CubeListBuilder.create()
-                        .texOffs(0, 255).addBox(-1.5F, -4.0F, -1.5F, 3.0F, 3.89F, 3.0F)
-                        .texOffs(14, 255).addBox(-3.5F, -6.0F, -3.5F, 7.0F, 1.99F, 7.0F)
-                        .texOffs(44, 255).addBox(-3.5F, -14.0F, -3.5F, 7.0F, 7.99F, 2.0F)
-                        .texOffs(64, 255).addBox(-4.5F, -10.0F, -2.5F, 1.0F, 1.49F, 5.0F)
-                        .texOffs(78, 255).addBox(3.5F, -10.0F, -2.5F, 1.0F, 1.49F, 5.0F),
+                        .texOffs(0, 255).addBox(-1.5F, -2.0F, -1.5F, 3.0F, 1.9F, 3.0F)
+                        .texOffs(14, 255).addBox(-3.5F, -4.0F, -3.5F, 7.0F, 2.0F, 7.0F)
+                        .texOffs(44, 255).addBox(-3.5F, -12.0F, -3.5F, 7.0F, 8.0F, 2.0F)
+                        .texOffs(64, 255).addBox(-4.5F, -8.0F, -2.5F, 1.0F, 1.5F, 5.0F)
+                        .texOffs(78, 255).addBox(3.5F, -8.0F, -2.5F, 1.0F, 1.5F, 5.0F),
                 PartPose.offset(-6.5F, 2.0F, -6.0F)
         );
 
         // Right swivel operator seat
         platform.addOrReplaceChild("seat_right", /* PartPose.offset(6.5F, 2.0F, -6.0F) */
                 CubeListBuilder.create()
-                        .texOffs(92, 255).addBox(-1.5F, -4.0F, -1.5F, 3.0F, 3.89F, 3.0F)
-                        .texOffs(106, 255).addBox(-3.5F, -6.0F, -3.5F, 7.0F, 1.99F, 7.0F)
-                        .texOffs(136, 255).addBox(-3.5F, -14.0F, -3.5F, 7.0F, 7.99F, 2.0F)
-                        .texOffs(156, 255).addBox(-4.5F, -10.0F, -2.5F, 1.0F, 1.49F, 5.0F)
-                        .texOffs(170, 255).addBox(3.5F, -10.0F, -2.5F, 1.0F, 1.49F, 5.0F),
+                        .texOffs(92, 255).addBox(-1.5F, -2.0F, -1.5F, 3.0F, 1.9F, 3.0F)
+                        .texOffs(106, 255).addBox(-3.5F, -4.0F, -3.5F, 7.0F, 2.0F, 7.0F)
+                        .texOffs(136, 255).addBox(-3.5F, -12.0F, -3.5F, 7.0F, 8.0F, 2.0F)
+                        .texOffs(156, 255).addBox(-4.5F, -8.0F, -2.5F, 1.0F, 1.5F, 5.0F)
+                        .texOffs(170, 255).addBox(3.5F, -8.0F, -2.5F, 1.0F, 1.5F, 5.0F),
                 PartPose.offset(6.5F, 2.0F, -6.0F)
         );
 
@@ -280,30 +280,30 @@ public class AsphaltPaverModel extends EntityModel<AsphaltPaverRenderState> {
         PartDefinition canopy = platform.addOrReplaceChild("canopy_roof",
                 CubeListBuilder.create()
                         // 4 corner pillars
-                        .texOffs(0, 275).addBox(-12.0F, -22.49F, 0.5F, 1.2F, 24.37F, 1.2F)
-                        .texOffs(10, 275).addBox(10.8F, -22.49F, 0.5F, 1.2F, 24.37F, 1.2F)
-                        .texOffs(20, 275).addBox(-12.0F, -22.49F, -15.5F, 1.2F, 24.37F, 1.2F)
-                        .texOffs(30, 275).addBox(10.8F, -22.49F, -15.5F, 1.2F, 24.37F, 1.2F)
+                        .texOffs(0, 275).addBox(-12.0F, -26.5F, 0.5F, 1.2F, 28.4F, 1.2F)
+                        .texOffs(10, 275).addBox(10.8F, -26.5F, 0.5F, 1.2F, 28.4F, 1.2F)
+                        .texOffs(20, 275).addBox(-12.0F, -26.5F, -15.5F, 1.2F, 28.4F, 1.2F)
+                        .texOffs(30, 275).addBox(10.8F, -26.5F, -15.5F, 1.2F, 28.4F, 1.2F)
                         // Molded canopy roof cover
-                        .texOffs(40, 275).addBox(-13.5F, -24.5F, -17.5F, 27.0F, 2.0F, 20.0F)
+                        .texOffs(40, 275).addBox(-13.5F, -28.5F, -17.5F, 27.0F, 2.0F, 20.0F)
                         // Tinted front windshield
-                        .texOffs(136, 275).addBox(-10.5F, -18.0F, 0.8F, 21.0F, 8.5F, 0.4F)
+                        .texOffs(136, 275).addBox(-10.5F, -22.0F, 0.8F, 21.0F, 12.5F, 0.4F)
                         // Front high-output LED worklight bar
-                        .texOffs(182, 275).addBox(-10.0F, -24.0F, 2.51F, 20.0F, 1.5F, 1.2F)
+                        .texOffs(182, 275).addBox(-10.0F, -28.0F, 2.51F, 20.0F, 1.5F, 1.2F)
                         // Rear screed floodlights
-                        .texOffs(228, 275).addBox(-9.5F, -24.0F, -18.3F, 3.5F, 1.5F, 0.8F)
-                        .texOffs(240, 275).addBox(6.0F, -24.0F, -18.3F, 3.5F, 1.5F, 0.8F),
+                        .texOffs(228, 275).addBox(-9.5F, -28.0F, -18.3F, 3.5F, 1.5F, 0.8F)
+                        .texOffs(240, 275).addBox(6.0F, -28.0F, -18.3F, 3.5F, 1.5F, 0.8F),
                 PartPose.offset(0.0F, 0.0F, 0.0F)
         );
 
         PartDefinition beaconBase = canopy.addOrReplaceChild("beacon_base",
                 CubeListBuilder.create()
-                        .texOffs(252, 275).addBox(-1.5F, -25.5F, -7.5F, 3.0F, 0.99F, 3.0F),
+                        .texOffs(252, 275).addBox(-1.5F, -29.5F, -7.5F, 3.0F, 0.99F, 3.0F),
                 PartPose.offset(0.0F, 0.0F, 0.0F)
         );
         beaconBase.addOrReplaceChild("beacon_reflector",
                 CubeListBuilder.create()
-                        .texOffs(266, 275).addBox(-1.0F, -28.5F, -7.0F, 2.0F, 2.99F, 2.0F),
+                        .texOffs(266, 275).addBox(-1.0F, -32.5F, -7.0F, 2.0F, 2.99F, 2.0F),
                 PartPose.offset(0.0F, 0.0F, 0.0F)
         );
 
@@ -328,7 +328,7 @@ public class AsphaltPaverModel extends EntityModel<AsphaltPaverRenderState> {
         );
 
         // ═════════════════════════════════════════════════════════════════════
-        // 7. REAR FLOATING SCREED ASSEMBLY (3-Block Wide Screed = 48 units)
+        // 7. REAR FLOATING SCREED ASSEMBLY (5-Block Wide Screed = 80 units)
         // ═════════════════════════════════════════════════════════════════════
         root.addOrReplaceChild("screed", /* PartPose.offset(0.0F, 22.0F, -22.0F) */
                 CubeListBuilder.create()
@@ -338,22 +338,30 @@ public class AsphaltPaverModel extends EntityModel<AsphaltPaverRenderState> {
                         // Hydraulic leveling rams
                         .texOffs(92, 330).addBox(-15.8F, -7.5F, 6.0F, 1.4F, 4.49F, 1.4F)
                         .texOffs(102, 330).addBox(14.4F, -7.5F, 6.0F, 1.4F, 4.49F, 1.4F)
-                        // Main heated bottom screed smoothing plate (48 units wide = 3 blocks!)
+                        // Main heated plate plus side wings. Wings reuse the plate UV and sit 0.01 off it.
                         .texOffs(0, 360).addBox(-24.0F, 0.5F, -6.0F, 48.0F, 1.4F, 7.5F)
-                        // Screed tamper box and vibration exciter frame (inset by 0.2F)
+                        .texOffs(0, 360).addBox(-40.01F, 0.51F, -6.0F, 16.0F, 1.4F, 7.5F)
+                        .texOffs(0, 360).addBox(24.01F, 0.51F, -6.0F, 16.0F, 1.4F, 7.5F)
+                        // Screed tamper box and side extensions
                         .texOffs(114, 360).addBox(-23.8F, -5.5F, -5.5F, 47.6F, 5.99F, 6.8F)
+                        .texOffs(114, 360).addBox(-39.81F, -5.49F, -5.5F, 16.0F, 5.99F, 6.8F)
+                        .texOffs(114, 360).addBox(23.81F, -5.49F, -5.5F, 16.0F, 5.99F, 6.8F)
                         // Screed crown adjustment turnbuckle
                         .texOffs(226, 360).addBox(-2.0F, -8.0F, -2.5F, 4.0F, 2.49F, 3.5F)
-                        // Left and right side end gates (retaining shoes with hazard warning stripes)
-                        .texOffs(244, 360).addBox(-24.4F, -7.5F, -6.5F, 0.5F, 8.5F, 9.5F)
-                        .texOffs(268, 360).addBox(23.9F, -7.5F, -6.5F, 0.5F, 8.5F, 9.5F)
+                        // End gates at the 5-block ends
+                        .texOffs(244, 360).addBox(-40.4F, -7.5F, -6.5F, 0.5F, 8.5F, 9.5F)
+                        .texOffs(268, 360).addBox(39.9F, -7.5F, -6.5F, 0.5F, 8.5F, 9.5F)
                         // Rear paving crew catwalk / walkway
                         .texOffs(0, 390).addBox(-22.0F, -0.5F, -12.0F, 44.0F, 0.8F, 5.8F)
+                        .texOffs(0, 390).addBox(-38.01F, -0.49F, -12.0F, 16.0F, 0.8F, 5.8F)
+                        .texOffs(0, 390).addBox(22.01F, -0.49F, -12.0F, 16.0F, 0.8F, 5.8F)
                         // Rear catwalk guardrail
                         .texOffs(102, 390).addBox(-22.0F, -8.0F, -12.0F, 44.0F, 7.49F, 0.4F)
+                        .texOffs(102, 390).addBox(-38.01F, -7.99F, -12.0F, 16.0F, 7.49F, 0.4F)
+                        .texOffs(102, 390).addBox(22.01F, -7.99F, -12.0F, 16.0F, 7.49F, 0.4F)
                         // Screed grade & slope remote control boxes
-                        .texOffs(194, 390).addBox(-23.0F, -8.5F, -2.0F, 2.5F, 3.5F, 2.0F)
-                        .texOffs(206, 390).addBox(20.5F, -8.5F, -2.0F, 2.5F, 3.5F, 2.0F),
+                        .texOffs(194, 390).addBox(-39.0F, -8.5F, -2.0F, 2.5F, 3.5F, 2.0F)
+                        .texOffs(206, 390).addBox(36.5F, -8.5F, -2.0F, 2.5F, 3.5F, 2.0F),
                 PartPose.offset(0.0F, 22.0F, -22.0F)
         );
 

@@ -65,7 +65,7 @@ def create_grader_textures():
     c_hazard_black = (18, 18, 18, 255)
 
     # Panoramic cab & interior
-    c_tinted_glass = (115, 180, 215, 255)
+    c_tinted_glass = (140, 210, 245, 38)
     c_glass_frame = (28, 29, 32, 255)
     c_seat_charcoal = (32, 33, 36, 255)
     c_seat_cushion = (45, 47, 52, 255)
@@ -243,8 +243,8 @@ def create_grader_textures():
     # Tinted panoramic safety glass enclosure (148, 308, 82, 34)
     draw.rectangle([148, 308, 230, 342], fill=c_tinted_glass, outline=c_glass_frame)
     # Subtle glass reflection glint
-    draw.line([(152, 338), (175, 312)], fill=(200, 235, 255, 255), width=2)
-    draw.line([(180, 338), (195, 320)], fill=(200, 235, 255, 255), width=1)
+    draw.line([(152, 338), (175, 312)], fill=(220, 245, 255, 65), width=2)
+    draw.line([(180, 338), (195, 320)], fill=(220, 245, 255, 65), width=1)
 
     # Sloped Cat equipment cab roof canopy (0, 338, 98, 27)
     paint_panel(0, 338, 98, 27, c_cat_yellow, c_cat_yellow_light, c_cat_yellow_dark)

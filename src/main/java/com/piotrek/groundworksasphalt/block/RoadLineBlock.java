@@ -1,5 +1,7 @@
 package com.piotrek.groundworksasphalt.block;
 
+import com.piotrek.groundworks.GroundworksMod;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -60,8 +62,16 @@ public class RoadLineBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockState belowState = level.getBlockState(pos.below());
-        return belowState.isSolid();
+        BlockPos belowPos = pos.below();
+        BlockState belowState = level.getBlockState(belowPos);
+        if (belowState.isSolid() || belowState.isFaceSturdy(level, belowPos, Direction.UP)) {
+            return true;
+        }
+        if (belowState.is(GroundworksMod.GRANULAR_BLOCK)) {
+            VoxelShape shape = belowState.getCollisionShape(level, belowPos);
+            return !shape.isEmpty();
+        }
+        return false;
     }
 
     @Override

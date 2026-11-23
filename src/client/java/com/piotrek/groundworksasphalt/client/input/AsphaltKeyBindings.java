@@ -19,6 +19,9 @@ public final class AsphaltKeyBindings {
     public static KeyMapping KEY_TOOL_AUX_RIGHT;
     public static KeyMapping KEY_ACTION_1;
     public static KeyMapping KEY_ACTION_2;
+    public static KeyMapping KEY_HORN;
+    public static KeyMapping KEY_BLADE_MODE;
+    public static KeyMapping KEY_LIGHTS;
 
     private AsphaltKeyBindings() {}
 
@@ -62,6 +65,27 @@ public final class AsphaltKeyBindings {
                 "key.pw_groundworks_asphalt.action_2",
                 InputConstants.Type.KEYBOARD,
                 InputConstants.KEY_B,
+                CATEGORY
+        ));
+
+        KEY_HORN = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+                "key.pw_groundworks_asphalt.horn",
+                InputConstants.Type.KEYBOARD,
+                InputConstants.KEY_C,
+                CATEGORY
+        ));
+
+        KEY_BLADE_MODE = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+                "key.pw_groundworks_asphalt.blade_mode",
+                InputConstants.Type.KEYBOARD,
+                InputConstants.KEY_Z,
+                CATEGORY
+        ));
+
+        KEY_LIGHTS = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+                "key.pw_groundworks_asphalt.lights",
+                InputConstants.Type.KEYBOARD,
+                InputConstants.KEY_L,
                 CATEGORY
         ));
     }

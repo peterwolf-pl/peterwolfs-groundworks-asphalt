@@ -114,7 +114,7 @@ public class AsphaltPaverRenderer extends EntityRenderer<AsphaltPaverEntity, Asp
             stack.rotateDegrees(Axis.XP, state.basePitch);
         }
         if (Math.abs(state.baseRoll) > 0.01F) {
-            stack.rotateDegrees(Axis.ZP, state.baseRoll);
+            stack.rotateDegrees(Axis.ZP, -state.baseRoll);
         }
 
         stack.scale(-1.0F, -1.0F, 1.0F);
@@ -126,7 +126,7 @@ public class AsphaltPaverRenderer extends EntityRenderer<AsphaltPaverEntity, Asp
                 this.model,
                 state,
                 stack,
-                RenderTypes.entityCutout(TEXTURE),
+                RenderTypes.entityTranslucent(TEXTURE),
                 state.lightCoords,
                 OverlayTexture.NO_OVERLAY,
                 state.outlineColor

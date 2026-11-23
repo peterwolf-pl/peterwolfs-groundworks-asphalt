@@ -299,24 +299,26 @@ public class CatGraderModel extends EntityModel<CatGraderRenderState> {
                 PartPose.offset(0.0F, 0.0F, -5.0F)
         );
 
-        // Moldboard Blade (mounted on circle slide rails)
+        // Moldboard Blade (mounted on circle slide rails) - lengthened by 1 block (+16 units) to 4 blocks (64 units wide)
         circleRing.addOrReplaceChild("moldboard" /* PartPose.offset(0.0F, 11.0F, 11.0F) */,
                 CubeListBuilder.create()
-                        // Wide curved parabolic moldboard blade face (3 blocks / 48 units wide)
-                        .texOffs(200, 226).addBox(-23.99F, 3.01F, -1.49F, 47.98F, 8.98F, 1.98F)
+                        // Wide curved parabolic moldboard blade face (4 blocks / 64 units wide)
+                        .texOffs(200, 226).addBox(-31.99F, 3.01F, -1.49F, 63.98F, 8.98F, 1.98F)
                         // Lower high-carbon hardened steel cutting edge wear lip (bright edge)
-                        .texOffs(200, 242).addBox(-23.99F, 12.01F, -1.49F, 47.98F, 2.98F, 1.98F)
+                        .texOffs(200, 242).addBox(-31.99F, 12.01F, -1.49F, 63.98F, 2.98F, 1.98F)
                         // Upper rolled dirt spill curl lip (Y: 1.05F, height 1.92F)
-                        .texOffs(200, 250).addBox(-23.99F, 1.05F, -0.49F, 47.98F, 1.92F, 1.98F)
-                        // Rear reinforcing vertical ribs (left, center, right)
-                        .texOffs(200, 258).addBox(-19.99F, 3.01F, 0.51F, 1.98F, 7.98F, 2.98F)
+                        .texOffs(200, 250).addBox(-31.99F, 1.05F, -0.49F, 63.98F, 1.92F, 1.98F)
+                        // Rear reinforcing vertical ribs (spaced evenly along 4-block span)
+                        .texOffs(200, 258).addBox(-26.99F, 3.01F, 0.51F, 1.98F, 7.98F, 2.98F)
+                        .texOffs(200, 258).addBox(-13.99F, 3.01F, 0.51F, 1.98F, 7.98F, 2.98F)
                         .texOffs(200, 258).addBox(-0.99F, 3.01F, 0.51F, 1.98F, 7.98F, 2.98F)
-                        .texOffs(200, 258).addBox(18.01F, 3.01F, 0.51F, 1.98F, 7.98F, 2.98F)
+                        .texOffs(200, 258).addBox(12.01F, 3.01F, 0.51F, 1.98F, 7.98F, 2.98F)
+                        .texOffs(200, 258).addBox(25.01F, 3.01F, 0.51F, 1.98F, 7.98F, 2.98F)
                         // Hydraulic side-shift ram on back of moldboard
-                        .texOffs(336, 234).addBox(-7.99F, 5.01F, 2.01F, 15.98F, 2.46F, 2.48F)
+                        .texOffs(336, 234).addBox(-10.99F, 5.01F, 2.01F, 21.98F, 2.46F, 2.48F)
                         // Blade end bit spill plates
-                        .texOffs(200, 258).addBox(-24.49F, 4.01F, -2.49F, 0.48F, 8.98F, 3.98F)
-                        .texOffs(200, 258).addBox(24.01F, 4.01F, -2.49F, 0.48F, 8.98F, 3.98F),
+                        .texOffs(200, 258).addBox(-32.49F, 4.01F, -2.49F, 0.48F, 8.98F, 3.98F)
+                        .texOffs(200, 258).addBox(32.01F, 4.01F, -2.49F, 0.48F, 8.98F, 3.98F),
                 PartPose.ZERO
         );
 
@@ -333,15 +335,21 @@ public class CatGraderModel extends EntityModel<CatGraderRenderState> {
                         .texOffs(0, 308).addBox(-11.99F, -4.99F, -24.99F, 1.98F, 8.98F, 16.98F)
                         .texOffs(0, 308).addBox(10.01F, -4.99F, -24.99F, 1.98F, 8.98F, 16.98F)
                         // Front ROPS structural corner pillars
-                        .texOffs(44, 308).addBox(-10.99F, -19.99F, -8.0F, 1.98F, 15.98F, 1.98F)
-                        .texOffs(44, 308).addBox(9.01F, -19.99F, -8.0F, 1.98F, 15.98F, 1.98F)
+                        .texOffs(44, 308).addBox(-10.99F, -22.99F, -8.0F, 1.98F, 18.98F, 1.98F)
+                        .texOffs(44, 308).addBox(9.01F, -22.99F, -8.0F, 1.98F, 18.98F, 1.98F)
                         // Rear ROPS structural corner pillars (Z: -24.97F to avoid Z=-24.99F plane)
-                        .texOffs(44, 308).addBox(-10.99F, -19.99F, -24.97F, 1.98F, 15.98F, 1.96F)
-                        .texOffs(44, 308).addBox(9.01F, -19.99F, -24.97F, 1.98F, 15.98F, 1.96F)
+                        .texOffs(44, 308).addBox(-10.99F, -22.99F, -24.97F, 1.98F, 18.98F, 1.96F)
+                        .texOffs(44, 308).addBox(9.01F, -22.99F, -24.97F, 1.98F, 18.98F, 1.96F)
                         // Upper window headers / roof perimeter ring
-                        .texOffs(56, 308).addBox(-11.49F, -21.99F, -25.49F, 22.98F, 2.98F, 18.48F)
-                        // Tinted safety glass enclosure (all-around panoramic cab)
-                        .texOffs(148, 308).addBox(-10.49F, -18.99F, -24.47F, 20.98F, 13.98F, 16.94F)
+                        .texOffs(56, 308).addBox(-11.49F, -24.99F, -25.49F, 22.98F, 2.98F, 18.48F)
+                        // Front panoramic windshield glass
+                        .texOffs(148, 308).addBox(-8.99F, -21.99F, -8.0F, 17.98F, 16.98F, 0.8F)
+                        // Rear panoramic cab window glass
+                        .texOffs(148, 308).addBox(-8.99F, -21.99F, -24.47F, 17.98F, 16.98F, 0.8F)
+                        // Left door observation glass
+                        .texOffs(148, 308).addBox(-10.49F, -21.99F, -23.5F, 0.8F, 16.98F, 14.5F)
+                        // Right door observation glass
+                        .texOffs(148, 308).addBox(9.69F, -21.99F, -23.5F, 0.8F, 16.98F, 14.5F)
                         // Left & right external walkways with anti-slip tread
                         .texOffs(0, 392).addBox(-16.99F, 7.01F, -25.0F, 4.98F, 0.98F, 18.0F)
                         .texOffs(0, 392).addBox(12.01F, 7.01F, -25.0F, 4.98F, 0.98F, 18.0F)
@@ -351,34 +359,38 @@ public class CatGraderModel extends EntityModel<CatGraderRenderState> {
                         // Side rearview mirrors on stalks
                         .texOffs(200, 420).addBox(-13.49F, -14.0F, -9.0F, 0.98F, 5.98F, 3.98F)
                         .texOffs(200, 420).addBox(12.51F, -14.0F, -9.0F, 0.98F, 5.98F, 3.98F)
-                        // Operator suspension seat (cushion & backrest)
-                        .texOffs(0, 368).addBox(-3.99F, -4.99F, -18.0F, 7.98F, 8.98F, 7.98F)
-                        // Steering console & dual electro-hydraulic joystick pods (height 6.94F, bottom Y=3.97F)
-                        .texOffs(40, 368).addBox(-5.99F, -2.97F, -12.0F, 11.98F, 6.94F, 3.98F)
+                        // Operator suspension seat pedestal base
+                        .texOffs(0, 368).addBox(-3.5F, 0.5F, -17.5F, 7.0F, 3.5F, 7.0F)
+                        // Operator suspension seat cushion
+                        .texOffs(0, 368).addBox(-4.0F, -2.5F, -18.0F, 8.0F, 3.0F, 8.0F)
+                        // Operator seat backrest
+                        .texOffs(0, 368).addBox(-3.5F, -11.5F, -18.0F, 7.0F, 9.0F, 2.0F)
+                        // Steering console & dual electro-hydraulic joystick pods
+                        .texOffs(40, 368).addBox(-5.99F, -0.5F, -12.0F, 11.98F, 4.47F, 3.98F)
                         // Steering wheel & angled column
-                        .texOffs(72, 368).addBox(-2.49F, -6.99F, -12.99F, 4.98F, 4.98F, 1.98F),
+                        .texOffs(72, 368).addBox(-2.49F, -4.5F, -12.99F, 4.98F, 4.98F, 1.98F),
                 PartPose.ZERO
         );
 
         // Cab Roof & Beacon Assembly
         PartDefinition roof = cab.addOrReplaceChild("roof" /* PartPose.ZERO */,
                 CubeListBuilder.create()
-                        // Sloped Cat equipment roof canopy
-                        .texOffs(0, 338).addBox(-12.49F, -24.99F, -26.49F, 24.98F, 2.98F, 20.48F)
+                        // Sloped Cat equipment roof canopy (underside at Y = -24.99F)
+                        .texOffs(0, 338).addBox(-12.49F, -27.99F, -26.49F, 24.98F, 2.98F, 20.48F)
                         // Roof HVAC Air Conditioning unit pod
-                        .texOffs(100, 338).addBox(-5.99F, -27.49F, -23.0F, 11.98F, 2.48F, 9.98F)
+                        .texOffs(100, 338).addBox(-5.99F, -30.49F, -23.0F, 11.98F, 2.48F, 9.98F)
                         // Forward LED floodlights on roof brow
-                        .texOffs(0, 420).addBox(-9.99F, -24.49F, -27.24F, 3.98F, 1.98F, 0.74F)
-                        .texOffs(0, 420).addBox(6.01F, -24.49F, -27.24F, 3.98F, 1.98F, 0.74F),
+                        .texOffs(0, 420).addBox(-9.99F, -27.49F, -27.24F, 3.98F, 1.98F, 0.74F)
+                        .texOffs(0, 420).addBox(6.01F, -27.49F, -27.24F, 3.98F, 1.98F, 0.74F),
                 PartPose.ZERO
         );
 
-        PartDefinition beaconBase = roof.addOrReplaceChild("beacon_base" /* PartPose.offset(0.0F, -25.04F, -16.0F) */,
+        PartDefinition beaconBase = roof.addOrReplaceChild("beacon_base" /* PartPose.offset(0.0F, -28.04F, -16.0F) */,
                 CubeListBuilder.create()
                         .texOffs(48, 420).addBox(-1.99F, -3.99F, -1.99F, 3.98F, 3.96F, 3.98F),
-                PartPose.offset(0.0F, -25.04F, -16.0F)
+                PartPose.offset(0.0F, -28.04F, -16.0F)
         );
-        beaconBase.addOrReplaceChild("beacon_reflector" /* PartPose.offset(0.0F, -27.04F, -16.0F) */,
+        beaconBase.addOrReplaceChild("beacon_reflector" /* PartPose.offset(0.0F, -30.04F, -16.0F) */,
                 CubeListBuilder.create()
                         .texOffs(68, 420).addBox(-0.99F, -2.99F, -0.99F, 1.98F, 2.94F, 1.98F),
                 PartPose.ZERO
@@ -445,8 +457,10 @@ public class CatGraderModel extends EntityModel<CatGraderRenderState> {
         this.frontRightMount.zRot = state.wheelLean;
 
         // 4. Blade / Moldboard Articulation:
-        // Height: drawbar drops down into dirt or raises for road transport
-        float liftY = 11.0F + state.bladeHeight * 4.0F;
+        // In Minecraft/Blockbench model space, +Y is DOWN (towards ground), -Y is UP (towards sky).
+        // Raising the blade (positive bladeHeight) lifts the drawbar UP (-Y).
+        // Lowering the blade (negative bladeHeight) lowers the drawbar DOWN (+Y) into the ground.
+        float liftY = 11.0F - state.bladeHeight * 5.0F;
         this.drawbar.y = liftY;
 
         // Circle ring yaw angle (blade angle relative to machine axis)
@@ -459,11 +473,11 @@ public class CatGraderModel extends EntityModel<CatGraderRenderState> {
         this.moldboard.zRot = state.bladeRoll;
 
         // Hydraulic lift cylinders angle adjustment based on blade height
-        float cylinderPitch = state.bladeHeight * 0.12F;
+        float cylinderPitch = -state.bladeHeight * 0.15F;
         this.leftLiftCylinder.xRot = cylinderPitch;
         this.rightLiftCylinder.xRot = cylinderPitch;
-        this.leftLiftRod.y = 12.0F + state.bladeHeight * 2.5F;
-        this.rightLiftRod.y = 12.0F + state.bladeHeight * 2.5F;
+        this.leftLiftRod.y = 12.0F - state.bladeHeight * 3.5F;
+        this.rightLiftRod.y = 12.0F - state.bladeHeight * 3.5F;
 
         // 5. Rear Ripper / Scarifier lift
         this.ripper.xRot = state.ripperLowered * 0.45F;

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " Y ",
+    "IRI",
+    "SIS"
+  ],
+  "key": {
+    "Y": "minecraft:yellow_concrete",
+    "I": "minecraft:iron_block",
+    "R": "minecraft:redstone_block",
+    "S": "minecraft:smooth_stone"
+  },
+  "result": {
+    "id": "pw_groundworks_asphalt:asphalt_roller",
+    "count": 1
+  }
+}

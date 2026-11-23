@@ -16,6 +16,9 @@ import net.minecraft.resources.Identifier;
  *   <li>toolAux (blade angle / hopper fold)</li>
  *   <li>action1 (grading / paving / vibrating toggle)</li>
  *   <li>action2 (ripper / hopper fold / water spray toggle)</li>
+ *   <li>horn (vehicle horn)</li>
+ *   <li>auxMode (blade mode toggle)</li>
+ *   <li>toggleLights (work lights toggle)</li>
  * </ul>
  */
 public record AsphaltInputPayload(
@@ -24,7 +27,10 @@ public record AsphaltInputPayload(
         float toolLift,
         float toolAux,
         boolean action1,
-        boolean action2
+        boolean action2,
+        boolean horn,
+        boolean auxMode,
+        boolean toggleLights
 ) implements CustomPacketPayload {
 
     public static final Type<AsphaltInputPayload> TYPE =
@@ -39,6 +45,9 @@ public record AsphaltInputPayload(
                     buf.readFloat(),
                     buf.readFloat(),
                     buf.readBoolean(),
+                    buf.readBoolean(),
+                    buf.readBoolean(),
+                    buf.readBoolean(),
                     buf.readBoolean()
             );
         }
@@ -51,6 +60,9 @@ public record AsphaltInputPayload(
             buf.writeFloat(payload.toolAux);
             buf.writeBoolean(payload.action1);
             buf.writeBoolean(payload.action2);
+            buf.writeBoolean(payload.horn);
+            buf.writeBoolean(payload.auxMode);
+            buf.writeBoolean(payload.toggleLights);
         }
     };
 
